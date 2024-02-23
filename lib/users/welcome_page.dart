@@ -79,7 +79,7 @@ class _WelcomeState extends State<Welcome> {
                       const Padding(
                         padding: EdgeInsets.only(top: 20.0),
                         child: Text(
-                          'Send & Receive',
+                          'Send Prompts &',
                           style: TextStyle(
                             fontSize: 25.0,
                             fontWeight: FontWeight.bold,
@@ -89,9 +89,9 @@ class _WelcomeState extends State<Welcome> {
 
                       // second header text
                       const Padding(
-                        padding: EdgeInsets.only(top: 2.0),
+                        padding: EdgeInsets.only(top: 0.0),
                         child: Text(
-                          'Gifts',
+                          'Get Answers',
                           style: TextStyle(
                             fontSize: 25.0,
                             fontWeight: FontWeight.bold,
@@ -118,8 +118,11 @@ class _WelcomeState extends State<Welcome> {
                             padding: const EdgeInsets.only(top: 50.0),
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const LoginPage()));
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginPage(),
+                                  ),
+                                );
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context)
