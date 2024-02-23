@@ -1,10 +1,7 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:afsbot/theme/theme_notifier.dart';
 import 'package:afsbot/users/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -16,27 +13,6 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
-    final themeNotifier = Provider.of<ThemeNotifier>(context);
-    bool isDarkMode = false;
-
-    void loadSwitchState() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      setState(() {
-        isDarkMode = prefs.getBool('isDarkMode') ?? false;
-      });
-    }
-
-    void saveSwitchState() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setBool('isDarkMode', isDarkMode); // Save the switch state
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      loadSwitchState();
-    }
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
@@ -50,19 +26,6 @@ class _WelcomeState extends State<Welcome> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      //switch here
-                      // Container(
-                      //   child: Switch(
-                      //     value: isDarkMode,
-                      //     onChanged: (value) {
-                      //       setState(() {
-                      //         isDarkMode = value;
-                      //         saveSwitchState();
-                      //         themeNotifier.toggleTheme();
-                      //       });
-                      //     },
-                      //   ),
-                      // ),
                       // Welcome text
                       const Padding(
                         padding: EdgeInsets.only(top: 100.0),

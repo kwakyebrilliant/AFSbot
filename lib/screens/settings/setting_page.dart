@@ -1,4 +1,6 @@
+import 'package:afsbot/theme/theme_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingPage extends StatefulWidget {
@@ -9,31 +11,29 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  bool isSwitched = false;
-  bool isDarkMode = false;
-
-  String? downloadURL;
-
-  @override
-  void initState() {
-    super.initState();
-    loadSwitchState();
-  }
-
-  void loadSwitchState() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      isDarkMode = prefs.getBool('isDarkMode') ?? false;
-    });
-  }
-
-  void saveSwitchState() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isDarkMode', isDarkMode); // Save the switch state
-  }
-
   @override
   Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
+    bool isDarkMode = false;
+
+    void loadSwitchState() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      setState(() {
+        isDarkMode = prefs.getBool('isDarkMode') ?? false;
+      });
+    }
+
+    void saveSwitchState() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isDarkMode', isDarkMode); // Save the switch state
+    }
+
+    @override
+    void initState() {
+      super.initState();
+      loadSwitchState();
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: CustomScrollView(
@@ -245,6 +245,190 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+
+                  //settings items here
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 50.0, left: 15.0, right: 15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        borderRadius: BorderRadius.circular(16.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Theme.of(context).colorScheme.inversePrimary,
+                            offset: const Offset(1, 1),
+                            blurRadius: 2.0,
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          //favorites here
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                      size: 30,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
+                                      child: Text(
+                                        'Favorite',
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_right_rounded,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
+                                  size: 30,
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          //faqs here
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0,
+                                right: 20.0,
+                                bottom: 20.0,
+                                top: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.newspaper_rounded,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                      size: 30,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
+                                      child: Text(
+                                        'FAQs',
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_right_rounded,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
+                                  size: 30,
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          //about here
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0,
+                                right: 20.0,
+                                bottom: 20.0,
+                                top: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.info_rounded,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                      size: 30,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 10.0),
+                                      child: Text(
+                                        'About Us',
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_right_rounded,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
+                                  size: 30,
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          //toggle appearance us here
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: 20.0,
+                                right: 20.0,
+                                bottom: 20.0,
+                                top: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    //switch here
+                                    Container(
+                                      child: Switch(
+                                        value: isDarkMode,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            isDarkMode = value;
+                                            saveSwitchState();
+                                            themeNotifier.toggleTheme();
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
