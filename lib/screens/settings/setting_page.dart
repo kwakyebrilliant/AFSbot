@@ -49,7 +49,7 @@ class _SettingPageState extends State<SettingPage> {
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               background: Image.asset(
-                "assets/images/chat.png",
+                "assets/images/wallpaper.png",
                 fit: BoxFit.cover,
               ),
               title: Padding(
