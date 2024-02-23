@@ -173,7 +173,7 @@ class _ForgotPageState extends State<ForgotPage> {
                         children: [
                           Image(
                             image: AssetImage(
-                              'assets/images/chat.png',
+                              'assets/images/chat_new.png',
                             ),
                             height: 250.0,
                             width: 250.0,
