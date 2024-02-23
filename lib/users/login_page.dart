@@ -292,6 +292,7 @@ class _LoginPageState extends State<LoginPage> {
                                         //person add icon here
                                         child: Icon(
                                           Icons.person_add_alt_rounded,
+                                          size: 18.0,
                                           color: Theme.of(context)
                                               .colorScheme
                                               .inversePrimary,
