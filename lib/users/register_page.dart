@@ -80,6 +80,32 @@ class _RegisterPageState extends State<RegisterPage> {
                                   borderRadius: BorderRadius.circular(10.0)),
                               child: Column(
                                 children: [
+                                  //username textformfield
+                                  TextFormField(
+                                    style: TextStyle(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: 'Username',
+                                      hintStyle: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inverseSurface,
+                                      ),
+                                      prefixIcon: Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 8.0, left: 8.0),
+                                        child: Icon(
+                                          Icons.alternate_email,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inverseSurface,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
                                   //email textformfield
                                   TextFormField(
                                     style: TextStyle(
@@ -196,34 +222,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
 
-                    //sign in text
+                    //Already a user text
                     Padding(
-                      padding: const EdgeInsets.only(right: 30.0, top: 50.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginPage(),
-                                ),
-                              );
-                            },
-                            child: const Text(
-                              'Already a user?',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-
-                    //signup with google text
-                    Padding(
-                      padding: const EdgeInsets.only(top: 75.0),
+                      padding: const EdgeInsets.only(top: 95.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -241,9 +242,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
 
-                          //signup with google text
+                          //already a user text
                           const Text(
-                            'Sign up With',
+                            'Already a user?',
                             style: TextStyle(
                               fontSize: 15.0,
                             ),
@@ -266,16 +267,23 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
 
-                    //google and login buttons
+                    //sign in button wrapped in a padding
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 30.0, left: 30.0, right: 30.0),
+                        top: 30.0,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          //google button
+                          //sign in button
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginPage(),
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   Theme.of(context).colorScheme.inversePrimary,
@@ -291,17 +299,36 @@ class _RegisterPageState extends State<RegisterPage> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(right: 3.0),
-                                    child: CircleAvatar(
-                                      radius: 12.0,
-                                      backgroundColor: Theme.of(context)
-                                          .colorScheme
-                                          .inversePrimary,
-                                      backgroundImage: const AssetImage(
-                                          "assets/images/google.png"),
+
+                                    //Icon container starts here
+                                    child: Container(
+                                      //specifies the margin around the icon
+                                      margin: const EdgeInsets.only(right: 5.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100.0),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+
+                                        //person add icon here
+                                        child: Icon(
+                                          Icons.login_rounded,
+                                          size: 18.0,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary,
+                                        ),
+                                      ),
                                     ),
                                   ),
+
+                                  //sign in text
                                   const Text(
-                                    'Google',
+                                    'Sign In',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 17.0,
