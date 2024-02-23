@@ -11,28 +11,30 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  bool isDarkMode = false;
+  bool isSwitched = false;
+
+  void loadSwitchState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isDarkMode = prefs.getBool('isDarkMode') ?? false;
+    });
+  }
+
+  void saveSwitchState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isDarkMode', isDarkMode); // Save the switch state
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadSwitchState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
-    bool isDarkMode = false;
-
-    void loadSwitchState() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      setState(() {
-        isDarkMode = prefs.getBool('isDarkMode') ?? false;
-      });
-    }
-
-    void saveSwitchState() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setBool('isDarkMode', isDarkMode); // Save the switch state
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      loadSwitchState();
-    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -398,7 +400,7 @@ class _SettingPageState extends State<SettingPage> {
 
                           //toggle appearance us here
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 left: 20.0,
                                 right: 20.0,
                                 bottom: 20.0,
@@ -410,17 +412,15 @@ class _SettingPageState extends State<SettingPage> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     //switch here
-                                    Container(
-                                      child: Switch(
-                                        value: isDarkMode,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            isDarkMode = value;
-                                            saveSwitchState();
-                                            themeNotifier.toggleTheme();
-                                          });
-                                        },
-                                      ),
+                                    Switch(
+                                      value: isDarkMode,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isDarkMode = value;
+                                          saveSwitchState(); // Save the switch state when it changes
+                                          themeNotifier.toggleTheme();
+                                        });
+                                      },
                                     ),
                                   ],
                                 ),
