@@ -88,7 +88,7 @@ class _LandingPageState extends State<LandingPage> {
                         ]
                       : null,
                 ),
-                child: const Icon(Icons.history),
+                child: const Icon(Icons.history_edu_rounded),
               ),
               label: 'History',
             ),
