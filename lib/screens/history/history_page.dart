@@ -31,42 +31,7 @@ class _HistoryPageState extends State<HistoryPage> {
               title: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blueGrey,
-                        ),
-                        child: Icon(
-                          Icons.person,
-                          size: 40.0,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(
-                      width: 5.0,
-                    ),
-
-                    //username here
-                    Container(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .background
-                          .withOpacity(0.7),
-                      child: Text(
-                        '@brilliant',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.inversePrimary,
-                        ),
-                      ),
-                    ),
-                  ],
+                  children: [],
                 ),
               ),
             ),
