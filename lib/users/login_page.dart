@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                           //container containing the textfield
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 80.0, left: 50.0, right: 30.0),
+                                top: 80.0, left: 30.0, right: 30.0),
                             child: Container(
                               padding: const EdgeInsets.all(20.0),
                               decoration: BoxDecoration(
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     //sign in button
                     Padding(
-                      padding: const EdgeInsets.only(left: 80.0, top: 50.0),
+                      padding: const EdgeInsets.only(left: 30.0, top: 50.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
