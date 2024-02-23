@@ -153,38 +153,44 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                         ),
 
-                        //themes here
+                        //container for the number of favorite and its icon
                         Container(
                           height: 110.0,
                           width: 110.0,
                           decoration: BoxDecoration(
-                            color: Colors.grey[300],
+                            color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(16.0),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFF17203A).withOpacity(0.3),
-                                offset: const Offset(2, 5),
-                                blurRadius: 10.0,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                                offset: const Offset(1, 1),
+                                blurRadius: 2.0,
                               ),
                             ],
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 25.0),
+                                  padding: const EdgeInsets.only(top: 25.0),
                                   child: Icon(
-                                    Icons.toggle_on_rounded,
-                                    color: Colors.black,
+                                    Icons.favorite_rounded,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
                                     size: 30,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 10.0),
+                                  padding: const EdgeInsets.only(top: 10.0),
                                   child: Text(
-                                    'Themes',
+                                    '172',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
                                     ),
                                   ),
                                 ),
@@ -193,38 +199,44 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                         ),
 
-                        //notifications
+                        //container for the number of visits in a week and its icon
                         Container(
                           height: 110.0,
                           width: 110.0,
                           decoration: BoxDecoration(
-                            color: Colors.grey[300],
+                            color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(16.0),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFF17203A).withOpacity(0.3),
-                                offset: const Offset(2, 5),
-                                blurRadius: 10.0,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                                offset: const Offset(1, 1),
+                                blurRadius: 2.0,
                               ),
                             ],
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 25.0),
+                                  padding: const EdgeInsets.only(top: 25.0),
                                   child: Icon(
-                                    Icons.notifications,
-                                    color: Colors.black,
+                                    Icons.view_week_rounded,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
                                     size: 30,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 10.0),
+                                  padding: const EdgeInsets.only(top: 10.0),
                                   child: Text(
-                                    'Notification',
+                                    '316',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
                                     ),
                                   ),
                                 ),
