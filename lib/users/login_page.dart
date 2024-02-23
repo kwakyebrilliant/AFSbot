@@ -72,29 +72,23 @@ class _LoginPageState extends State<LoginPage> {
                           //container containing the textfield
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 80.0, left: 80.0, right: 30.0),
+                                top: 80.0, left: 50.0, right: 30.0),
                             child: Container(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(20.0),
                               decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.primary,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
                                   borderRadius: BorderRadius.circular(10.0)),
                               child: Column(
                                 children: [
                                   //email textformfield
                                   TextFormField(
                                     style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inverseSurface,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                     decoration: InputDecoration(
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                        ),
-                                      ),
                                       hintText: 'Email',
                                       hintStyle: TextStyle(
                                         color: Theme.of(context)
@@ -108,28 +102,19 @@ class _LoginPageState extends State<LoginPage> {
                                           Icons.email_rounded,
                                           color: Theme.of(context)
                                               .colorScheme
-                                              .primary,
+                                              .inverseSurface,
                                         ),
                                       ),
-                                      filled: true,
                                     ),
                                   ),
 
                                   //password textformfield
                                   TextFormField(
                                     style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inverseSurface,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                     decoration: InputDecoration(
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                        ),
-                                      ),
                                       hintText: 'Password',
                                       hintStyle: TextStyle(
                                         color: Theme.of(context)
@@ -143,10 +128,9 @@ class _LoginPageState extends State<LoginPage> {
                                           Icons.lock,
                                           color: Theme.of(context)
                                               .colorScheme
-                                              .primary,
+                                              .inverseSurface,
                                         ),
                                       ),
-                                      filled: true,
                                     ),
                                   ),
                                 ],
