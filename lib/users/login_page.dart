@@ -1,3 +1,4 @@
+import 'package:afsbot/component/landing_page.dart';
 import 'package:afsbot/users/forgot_page.dart';
 import 'package:afsbot/users/register_page.dart';
 import 'package:flutter/material.dart';
@@ -148,7 +149,13 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const LandingPage(),
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   Theme.of(context).colorScheme.inversePrimary,
