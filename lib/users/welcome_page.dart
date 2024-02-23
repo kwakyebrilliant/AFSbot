@@ -103,7 +103,7 @@ class _WelcomeState extends State<Welcome> {
                       const Padding(
                         padding: EdgeInsets.only(top: 20.0, right: 20.0),
                         child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do.',
+                          'Automated conversational agent; responds to user queries or prompts.',
                           style: TextStyle(
                             fontSize: 17.0,
                           ),
