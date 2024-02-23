@@ -273,54 +273,14 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
 
-                      //google and register buttons
+                      //sign up button wrapped in a padding
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 30.0, left: 30.0, right: 30.0),
+                          top: 30.0,
+                        ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            //google button
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 3.0),
-                                      child: CircleAvatar(
-                                        radius: 12.0,
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .inversePrimary,
-                                        backgroundImage: const AssetImage(
-                                            "assets/images/google.png"),
-                                      ),
-                                    ),
-                                    const Text(
-                                      'Google',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-
                             //sign up button
                             ElevatedButton(
                               onPressed: () {
@@ -347,15 +307,34 @@ class _LoginPageState extends State<LoginPage> {
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(right: 3.0),
-                                      child: CircleAvatar(
-                                        radius: 12.0,
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .inversePrimary,
-                                        backgroundImage: const AssetImage(
-                                            "assets/images/signup.png"),
+
+                                      //Icon container starts here
+                                      child: Container(
+                                        //specifies the margin around the icon
+                                        margin:
+                                            const EdgeInsets.only(right: 5.0),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100.0),
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(3.0),
+
+                                          //person add icon here
+                                          child: Icon(
+                                            Icons.person_add_alt_rounded,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .inversePrimary,
+                                          ),
+                                        ),
                                       ),
                                     ),
+
+                                    //signup text
                                     const Text(
                                       'Sign Up',
                                       style: TextStyle(
