@@ -38,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
               _currentIndex = index;
             });
           },
-          selectedItemColor: Colors.blueGrey, // Color for selected item
+          selectedItemColor: const Color(0xFFAEE6f0), // Color for selected item
           unselectedItemColor: Theme.of(context)
               .colorScheme
               .inversePrimary, // Color for unselected items
@@ -88,9 +88,9 @@ class _LandingPageState extends State<LandingPage> {
                         ]
                       : null,
                 ),
-                child: const Icon(Icons.menu_book_rounded),
+                child: const Icon(Icons.history_rounded),
               ),
-              label: 'Bible',
+              label: 'History',
             ),
             BottomNavigationBarItem(
               icon: Container(
