@@ -152,7 +152,7 @@ class _WelcomeState extends State<Welcome> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 80.0, right: 50.0),
                     child: Image.asset(
-                      "assets/images/gifts.png",
+                      "assets/images/chat.png",
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
                     ),
