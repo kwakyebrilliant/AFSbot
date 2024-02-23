@@ -431,6 +431,20 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ),
                   ),
+
+                  //logout text here
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+                      child: Text(
+                        'LOGOUT',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
