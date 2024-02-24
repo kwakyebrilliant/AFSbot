@@ -29,18 +29,22 @@ class AboutPage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 70,
-              backgroundImage: AssetImage('assets/profile_image.jpg'),
+            //circle avatar displaying the logo
+            Padding(
+              padding: EdgeInsets.only(top: 20.0),
+              child: CircleAvatar(
+                radius: 70,
+                backgroundImage: AssetImage('assets/images/logo.png'),
+              ),
             ),
             SizedBox(height: 20.0),
             Text(
-              'Flutter App',
+              'AFSbot App',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
