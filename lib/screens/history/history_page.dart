@@ -23,10 +23,6 @@ class _HistoryPageState extends State<HistoryPage> {
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                // background: Image.asset(
-                //   "assets/images/wallpaper.png",
-                //   fit: BoxFit.cover,
-                // ),
                 title: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -61,9 +57,34 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
             ),
             SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //Text to display the day interval
+                    const Text(
+                      'Today',
+                      style: TextStyle(
+                        color: Colors.blueGrey,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+
+                    //container for each prompt
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
