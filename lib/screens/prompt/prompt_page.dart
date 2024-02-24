@@ -1,5 +1,3 @@
-// ignore_for_file: use_super_parameters, unnecessary_import
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,10 +21,12 @@ class _PromptPageState extends State<PromptPage> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Icon(
-            Icons.arrow_left_rounded,
-            color: Theme.of(context).colorScheme.inversePrimary,
-            size: 50.0,
+          child: Container(
+            child: Icon(
+              Icons.arrow_left_rounded,
+              color: Theme.of(context).colorScheme.inversePrimary,
+              size: 50.0,
+            ),
           ),
         ),
       ),
@@ -98,11 +98,13 @@ class _PromptPageState extends State<PromptPage> {
         margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
         child: Row(
           children: <Widget>[
-            const Flexible(
+            Flexible(
               child: TextField(
                 minLines: 1,
                 maxLines: 5,
-                decoration: InputDecoration.collapsed(
+                // controller: _textController,
+                // onSubmitted: _handleSubmitted,
+                decoration: const InputDecoration.collapsed(
                   hintText: 'Message AFSbot',
                 ),
               ),
