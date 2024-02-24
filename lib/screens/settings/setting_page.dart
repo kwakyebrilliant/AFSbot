@@ -24,9 +24,10 @@ class _SettingPageState extends State<SettingPage> {
     });
   }
 
+  // Save the switch state
   void saveSwitchState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isDarkMode', isDarkMode); // Save the switch state
+    prefs.setBool('isDarkMode', isDarkMode);
   }
 
   @override
@@ -35,6 +36,7 @@ class _SettingPageState extends State<SettingPage> {
     loadSwitchState();
   }
 
+  //Number of days visited value
   int visitedDays = 4;
 
   @override
@@ -46,16 +48,17 @@ class _SettingPageState extends State<SettingPage> {
         backgroundColor: Theme.of(context).colorScheme.background,
         body: CustomScrollView(
           slivers: [
+            // sliver appbar starts here
             SliverAppBar(
               backgroundColor: Theme.of(context).colorScheme.background,
               expandedHeight: 140.0,
-              // collapsedHeight: 30.0,
-              // toolbarHeight: 30.0,
               floating: false,
               pinned: true,
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
+
+                //background image of the sliver appbar
                 background: Image.asset(
                   "assets/images/wallpaper.png",
                   fit: BoxFit.cover,
