@@ -11,6 +11,16 @@ class PromptDetailsPage extends StatefulWidget {
 class _PromptDetailsPageState extends State<PromptDetailsPage> {
   bool isFavoriteActive = false;
 
+  final TextEditingController _textController = TextEditingController();
+  final List<String> _messages = [];
+
+  void _handleSubmitted(String text) {
+    _textController.clear();
+    setState(() {
+      _messages.insert(0, text);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +86,51 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
                   ),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+      body: Column(
+        children: [
+          Flexible(
+            child: ListView.builder(
+              reverse: true,
+              itemCount: _messages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(_messages[index]),
+                );
+              },
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(color: Theme.of(context).cardColor),
+            child: _buildTextComposer(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextComposer() {
+    return IconTheme(
+      data: const IconThemeData(color: Colors.blueGrey),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+        child: Row(
+          children: <Widget>[
+            const Flexible(
+              child: TextField(
+                minLines: 1,
+                maxLines: 5,
+                decoration: InputDecoration.collapsed(
+                  hintText: 'Message AFSbot',
+                ),
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.send),
+              onPressed: () {},
             ),
           ],
         ),
