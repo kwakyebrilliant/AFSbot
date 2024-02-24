@@ -1,7 +1,9 @@
 import 'package:afsbot/theme/theme_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:afsbot/screens/settings/faq_page.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -291,47 +293,70 @@ class _SettingPageState extends State<SettingPage> {
                           ),
 
                           //faqs here
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0,
-                                right: 20.0,
-                                bottom: 20.0,
-                                top: 10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const FagPage(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inverseSurface,
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20.0,
+                                    right: 20.0,
+                                    bottom: 20.0,
+                                    top: 10.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.newspaper_rounded,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary,
+                                          size: 30,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
+                                          child: Text(
+                                            'FAQs',
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .inversePrimary,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     Icon(
-                                      Icons.newspaper_rounded,
+                                      Icons.arrow_right_rounded,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .inversePrimary,
                                       size: 30,
                                     ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        'FAQs',
-                                        style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 ),
-                                Icon(
-                                  Icons.arrow_right_rounded,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary,
-                                  size: 30,
-                                ),
-                              ],
+                              ),
                             ),
                           ),
 
