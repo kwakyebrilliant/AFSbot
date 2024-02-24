@@ -109,66 +109,18 @@ class FagPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  //Search here
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 20.0,
-                        bottom: 20.0,
-                      ),
-                      child: Container(
-                        height: 50.0,
-                        width: MediaQuery.of(context).size.width - 10.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Theme.of(context).colorScheme.background,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 7,
-                              offset: const Offset(0, 1),
-                            ),
-                          ],
-                        ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            filled: true,
-                            hintText: 'Search',
-                            contentPadding: const EdgeInsets.all(
-                              10.0,
-                            ),
-                            border: InputBorder.none,
-                            fillColor: Theme.of(context).colorScheme.background,
-                            prefixIcon: Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 8.0, left: 8.0),
-                              child: Icon(
-                                Icons.search_rounded,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .inversePrimary,
-                              ),
-                            ),
-                            prefixIconConstraints: const BoxConstraints(
-                                maxHeight: 20.0, maxWidth: 40.0),
-                            prefixIconColor:
-                                Theme.of(context).colorScheme.inversePrimary,
-                          ),
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.inversePrimary,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height - 350.0,
-            child: FAQList(),
+
+          //faq list here
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Container(
+              height: MediaQuery.of(context).size.height - 350.0,
+              child: FAQList(),
+            ),
           ),
         ],
       ),
