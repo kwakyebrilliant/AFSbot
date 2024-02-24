@@ -220,6 +220,7 @@ class _SettingPageState extends State<SettingPage> {
                             child: Stack(
                               fit: StackFit.expand,
                               children: [
+                                //circular progress indicator here (This is progressive)
                                 CircularProgressIndicator(
                                   value: visitedDays / 7,
                                   strokeWidth: 10,
@@ -230,6 +231,8 @@ class _SettingPageState extends State<SettingPage> {
                                       const AlwaysStoppedAnimation<Color>(
                                           Colors.green),
                                 ),
+
+                                //display the number of days visited in a week
                                 Center(
                                   child: Text(
                                     '$visitedDays/7 days',
