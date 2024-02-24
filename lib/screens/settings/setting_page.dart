@@ -170,6 +170,8 @@ class _SettingPageState extends State<SettingPage> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 25.0),
+
+                                  //the favorite icon
                                   child: Icon(
                                     Icons.favorite_rounded,
                                     color: Theme.of(context)
@@ -180,6 +182,8 @@ class _SettingPageState extends State<SettingPage> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
+
+                                  //text displaying the total number of favorites
                                   child: Text(
                                     '172',
                                     style: TextStyle(
