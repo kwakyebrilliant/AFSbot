@@ -370,6 +370,7 @@ class _SettingPageState extends State<SettingPage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
+                                        //newspaper icon for depicting the faqs here
                                         Icon(
                                           Icons.newspaper_rounded,
                                           color: Theme.of(context)
@@ -380,6 +381,8 @@ class _SettingPageState extends State<SettingPage> {
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 10.0),
+
+                                          //faqs text here
                                           child: Text(
                                             'FAQs',
                                             style: TextStyle(
@@ -391,6 +394,8 @@ class _SettingPageState extends State<SettingPage> {
                                         ),
                                       ],
                                     ),
+
+                                    //arrow right here
                                     Icon(
                                       Icons.arrow_right_rounded,
                                       color: Theme.of(context)
