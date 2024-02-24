@@ -23,6 +23,8 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
           onTap: () {
             Navigator.of(context).pop();
           },
+
+          //arrow left icon here
           child: Icon(
             Icons.arrow_left_rounded,
             color: Theme.of(context).colorScheme.inversePrimary,
@@ -32,6 +34,7 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            //favorite icons here
             Padding(
               padding: const EdgeInsets.all(7.0),
               child: Container(
