@@ -22,12 +22,12 @@ class _FavoritePageState extends State<FavoritePage> {
           child: Stack(
             children: [
               const Positioned(
-                top: 150.0,
-                left: 50.0,
+                top: 120.0,
+                left: 40.0,
                 child: Column(
                   children: <Widget>[
                     Text(
-                      "Share ShareBible",
+                      "Favorite Prompts",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35.0,
@@ -35,7 +35,7 @@ class _FavoritePageState extends State<FavoritePage> {
                       ),
                     ),
                     Text(
-                      "Your greatest gift",
+                      "Your prompts you cherish",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
