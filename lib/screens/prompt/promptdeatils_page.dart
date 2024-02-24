@@ -119,6 +119,10 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
         margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
         child: Row(
           children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {},
+            ),
             const Flexible(
               child: TextField(
                 minLines: 1,
