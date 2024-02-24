@@ -3,6 +3,7 @@ import 'package:afsbot/screens/settings/favorite_page.dart';
 import 'package:afsbot/theme/theme_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,6 +37,8 @@ class _SettingPageState extends State<SettingPage> {
     super.initState();
     loadSwitchState();
   }
+
+  int visitedDays = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -187,10 +190,9 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                         ),
 
-                        //container for the number of visits in a week and its icon
                         Container(
-                          height: 110.0,
-                          width: 110.0,
+                          width: 110,
+                          height: 110,
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(16.0),
@@ -204,27 +206,26 @@ class _SettingPageState extends State<SettingPage> {
                               ),
                             ],
                           ),
-                          child: Center(
-                            child: Column(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Stack(
+                              fit: StackFit.expand,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 25.0),
-                                  child: Icon(
-                                    Icons.view_week_rounded,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .inversePrimary,
-                                    size: 30,
-                                  ),
+                                CircularProgressIndicator(
+                                  value: visitedDays / 7,
+                                  strokeWidth: 10,
+                                  backgroundColor: Theme.of(context)
+                                      .colorScheme
+                                      .inverseSurface,
+                                  valueColor:
+                                      const AlwaysStoppedAnimation<Color>(
+                                          Colors.green),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10.0),
+                                Center(
                                   child: Text(
-                                    '4',
-                                    style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inversePrimary,
+                                    '$visitedDays/7 visits',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
