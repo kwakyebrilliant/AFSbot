@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
 
                             //start conversation text
                             const Text(
-                              'Start Coversation',
+                              'Start Conversation',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17.0,
