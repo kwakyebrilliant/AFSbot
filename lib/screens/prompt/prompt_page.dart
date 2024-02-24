@@ -98,13 +98,13 @@ class _PromptPageState extends State<PromptPage> {
         margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
         child: Row(
           children: <Widget>[
-            Flexible(
+            const Flexible(
               child: TextField(
                 minLines: 1,
                 maxLines: 5,
                 // controller: _textController,
                 // onSubmitted: _handleSubmitted,
-                decoration: const InputDecoration.collapsed(
+                decoration: InputDecoration.collapsed(
                   hintText: 'Message AFSbot',
                 ),
               ),
