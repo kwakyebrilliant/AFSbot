@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters, unnecessary_import
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +23,10 @@ class _PromptPageState extends State<PromptPage> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Container(
-            child: Icon(
-              Icons.arrow_left_rounded,
-              color: Theme.of(context).colorScheme.inversePrimary,
-              size: 50.0,
-            ),
+          child: Icon(
+            Icons.arrow_left_rounded,
+            color: Theme.of(context).colorScheme.inversePrimary,
+            size: 50.0,
           ),
         ),
       ),
