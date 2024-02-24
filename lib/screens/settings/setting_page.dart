@@ -501,7 +501,9 @@ class _SettingPageState extends State<SettingPage> {
                                       onChanged: (value) {
                                         setState(() {
                                           isDarkMode = value;
-                                          saveSwitchState(); // Save the switch state when it changes
+
+                                          // Save the switch state when it changes
+                                          saveSwitchState();
                                           themeNotifier.toggleTheme();
                                         });
                                       },
