@@ -404,9 +404,10 @@ class _SettingPageState extends State<SettingPage> {
                                           size: 30,
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(left: 10.0),
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
                                           child: Text(
-                                            'About Us',
+                                            'About',
                                             style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
