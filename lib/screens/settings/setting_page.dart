@@ -1,4 +1,5 @@
 import 'package:afsbot/screens/settings/about_page.dart';
+import 'package:afsbot/screens/settings/favorite_page.dart';
 import 'package:afsbot/theme/theme_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -255,6 +256,13 @@ class _SettingPageState extends State<SettingPage> {
                         children: [
                           //favorites here
                           GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const FavoritePage(),
+                                ),
+                              );
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 border: Border(
