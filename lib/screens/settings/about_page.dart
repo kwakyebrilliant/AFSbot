@@ -42,7 +42,10 @@ class AboutPage extends StatelessWidget {
                 backgroundImage: AssetImage('assets/images/logo.png'),
               ),
             ),
+
             SizedBox(height: 20.0),
+
+            //Text displaying the app name
             Text(
               'AFSbot App',
               style: TextStyle(
@@ -50,7 +53,10 @@ class AboutPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+
             SizedBox(height: 10.0),
+
+            //Text displaying the version
             Text(
               'Version 1.0.0',
               style: TextStyle(
@@ -58,7 +64,10 @@ class AboutPage extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
+
             SizedBox(height: 20.0),
+
+            //Text displaying the description title
             Text(
               'Description:',
               style: TextStyle(
@@ -66,13 +75,19 @@ class AboutPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+
             SizedBox(height: 10.0),
+
+            //Text displaying the description of the app
             Text(
-              'This is a Flutter app designed for showcasing about page design. It demonstrates various UI components and layouts commonly used in Flutter apps.',
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim sit amet risus varius feugiat. Duis non consectetur tortor. Nunc id tortor feugiat, fermentum odio nec, tincidunt libero. In hac habitasse platea dictumst.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
+
             SizedBox(height: 20.0),
+
+            //Text displaying contact us title
             Text(
               'Contact Us:',
               style: TextStyle(
@@ -80,9 +95,12 @@ class AboutPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+
             SizedBox(height: 10.0),
+
+            //Text displaying contact us details
             Text(
-              'Email: example@example.com\nPhone: +1234567890',
+              'Email: example@example.com\nPhone: +2330000000000',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
