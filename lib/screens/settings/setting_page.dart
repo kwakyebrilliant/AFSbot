@@ -198,6 +198,7 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                         ),
 
+                        //container for the number of days visited within a week
                         Container(
                           width: 110,
                           height: 110,
