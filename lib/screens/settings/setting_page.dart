@@ -120,6 +120,8 @@ class _SettingPageState extends State<SettingPage> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 25.0),
+
+                                  //the edit icon for the number of prompts
                                   child: Icon(
                                     Icons.edit_rounded,
                                     color: Theme.of(context)
@@ -130,6 +132,8 @@ class _SettingPageState extends State<SettingPage> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
+
+                                  //text displying the total number of prompts
                                   child: Text(
                                     '316',
                                     style: TextStyle(
