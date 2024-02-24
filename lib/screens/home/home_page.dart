@@ -13,6 +13,37 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          elevation: 0,
+          title: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: const AssetImage('assets/images/logo.png'),
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+
+                // afs chatbot text here
+                const Padding(
+                  padding: EdgeInsets.only(left: 40.0),
+                  child: Text(
+                    'Chat with AFSbot',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
