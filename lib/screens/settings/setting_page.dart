@@ -43,7 +43,7 @@ class _SettingPageState extends State<SettingPage> {
           slivers: [
             SliverAppBar(
               backgroundColor: Theme.of(context).colorScheme.background,
-              expandedHeight: 100.0,
+              expandedHeight: 140.0,
               // collapsedHeight: 30.0,
               // toolbarHeight: 30.0,
               floating: false,
