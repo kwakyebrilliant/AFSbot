@@ -27,7 +27,9 @@ class _HistoryPageState extends State<HistoryPage> {
                 title: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      //search here
                       Expanded(
                         child: TextFormField(
                           style: TextStyle(
@@ -40,8 +42,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                   Theme.of(context).colorScheme.inverseSurface,
                             ),
                             prefixIcon: Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 8.0, left: 8.0),
+                              padding: const EdgeInsets.only(right: 8.0),
                               child: Icon(
                                 Icons.search_rounded,
                                 color: Theme.of(context)
@@ -49,6 +50,22 @@ class _HistoryPageState extends State<HistoryPage> {
                                     .inverseSurface,
                               ),
                             ),
+                          ),
+                        ),
+                      ),
+
+                      //edit icon here
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          borderRadius: BorderRadius.circular(60.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Icon(
+                            Icons.edit_rounded,
+                            size: 16.0,
+                            color: Theme.of(context).colorScheme.background,
                           ),
                         ),
                       ),

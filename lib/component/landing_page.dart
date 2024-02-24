@@ -38,21 +38,28 @@ class _LandingPageState extends State<LandingPage> {
               _currentIndex = index;
             });
           },
-          selectedItemColor: Colors.blueGrey, // Color for selected item
-          unselectedItemColor: Theme.of(context)
-              .colorScheme
-              .inversePrimary, // Color for unselected items
-          showSelectedLabels: false, // Hide selected labels
-          showUnselectedLabels: false, // Hide unselected labels
+          // Color for selected item
+          selectedItemColor: Theme.of(context).colorScheme.background,
+
+          // Color for unselected items
+          unselectedItemColor: Theme.of(context).colorScheme.inversePrimary,
+
+          // Hide selected labels
+          showSelectedLabels: false,
+
+          // Hide unselected labels
+          showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
               icon: Container(
-                padding: const EdgeInsets.all(8.0), // Add padding
+                padding: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   color: _currentIndex == 0
                       ? Theme.of(context).colorScheme.inversePrimary
-                      : null, // White background for the selected item
+
+                      // White background for the selected item
+                      : null,
                   borderRadius: BorderRadius.circular(
                     10.0,
                   ),
@@ -75,7 +82,9 @@ class _LandingPageState extends State<LandingPage> {
                 decoration: BoxDecoration(
                   color: _currentIndex == 1
                       ? Theme.of(context).colorScheme.inversePrimary
-                      : null, // White background for the selected item
+
+                      // White background for the selected item
+                      : null,
                   borderRadius: BorderRadius.circular(
                     10.0,
                   ),
@@ -98,7 +107,9 @@ class _LandingPageState extends State<LandingPage> {
                 decoration: BoxDecoration(
                   color: _currentIndex == 2
                       ? Theme.of(context).colorScheme.inversePrimary
-                      : null, // White background for the selected item
+
+                      // White background for the selected item
+                      : null,
                   borderRadius: BorderRadius.circular(
                     10.0,
                   ),

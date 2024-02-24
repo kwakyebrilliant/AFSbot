@@ -119,10 +119,25 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
         margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
         child: Row(
           children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {},
+            //edit icon here
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(60.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Icon(
+                    Icons.edit_rounded,
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+              ),
             ),
+
+            //message afsbot text here
             const Flexible(
               child: TextField(
                 minLines: 1,

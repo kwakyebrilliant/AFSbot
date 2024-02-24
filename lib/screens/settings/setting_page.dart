@@ -122,12 +122,22 @@ class _SettingPageState extends State<SettingPage> {
                                   padding: const EdgeInsets.only(top: 25.0),
 
                                   //the edit icon for the number of prompts
-                                  child: Icon(
-                                    Icons.edit_rounded,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .inversePrimary,
-                                    size: 30,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(7.0),
+                                    height: 42.0,
+                                    width: 42.0,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                      borderRadius: BorderRadius.circular(60.0),
+                                    ),
+                                    child: Icon(
+                                      Icons.edit_rounded,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .background,
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -172,12 +182,22 @@ class _SettingPageState extends State<SettingPage> {
                                   padding: const EdgeInsets.only(top: 25.0),
 
                                   //the favorite icon
-                                  child: Icon(
-                                    Icons.favorite_rounded,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .inversePrimary,
-                                    size: 30,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(7.0),
+                                    height: 42.0,
+                                    width: 42.0,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                      borderRadius: BorderRadius.circular(60.0),
+                                    ),
+                                    child: Icon(
+                                      Icons.favorite_rounded,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .background,
+                                    ),
                                   ),
                                 ),
                                 Padding(
