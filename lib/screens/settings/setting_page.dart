@@ -38,7 +38,7 @@ class _SettingPageState extends State<SettingPage> {
     loadSwitchState();
   }
 
-  int visitedDays = 3;
+  int visitedDays = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +223,7 @@ class _SettingPageState extends State<SettingPage> {
                                 ),
                                 Center(
                                   child: Text(
-                                    '$visitedDays/7 visits',
+                                    '$visitedDays/7 days',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
