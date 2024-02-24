@@ -1,3 +1,4 @@
+import 'package:afsbot/screens/prompt/prompt_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -109,11 +110,11 @@ class _HomePageState extends State<HomePage> {
                     //start conversation button
                     ElevatedButton(
                       onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const RegisterPage(),
-                        //   ),
-                        // );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const PromptPage(),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
