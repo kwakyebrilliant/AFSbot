@@ -31,17 +31,45 @@ class _HomePageState extends State<HomePage> {
 
                 // afs chatbot text here
                 const Padding(
-                  padding: EdgeInsets.only(left: 40.0),
+                  padding: EdgeInsets.only(left: 50.0),
                   child: Text(
                     'Chat with AFSbot',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
+                      fontSize: 18.0,
                     ),
                   ),
                 )
               ],
             ),
+          ),
+        ),
+        body: const SingleChildScrollView(
+          padding: EdgeInsets.all(60.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              //Text displaying the app name
+              Text(
+                'How can I help you Today?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold,
+                  wordSpacing: -2,
+                ),
+              ),
+
+              //Text displaying the description of the app
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim sit amet risus varius feugiat.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
           ),
         ),
       ),
