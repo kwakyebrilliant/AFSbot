@@ -97,6 +97,78 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 16),
                 ),
               ),
+
+              //start conversation button wrapped in a padding
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 60.0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //start conversation button
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigator.of(context).push(
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const RegisterPage(),
+                        //   ),
+                        // );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Theme.of(context).colorScheme.inversePrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 3.0),
+
+                              //Icon container starts here
+                              child: Container(
+                                //specifies the margin around the icon
+                                margin: const EdgeInsets.only(right: 5.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100.0),
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+
+                                  //chat icon here
+                                  child: Icon(
+                                    Icons.chat_rounded,
+                                    size: 18.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            //start conversation text
+                            const Text(
+                              'Start Coversation',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
