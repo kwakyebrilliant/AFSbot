@@ -414,7 +414,7 @@ class _SettingPageState extends State<SettingPage> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => AboutPage(),
+                                  builder: (context) => const AboutPage(),
                                 ),
                               );
                             },
@@ -443,6 +443,7 @@ class _SettingPageState extends State<SettingPage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
+                                        //info icon for depicting about here
                                         Icon(
                                           Icons.info_rounded,
                                           color: Theme.of(context)
@@ -453,6 +454,8 @@ class _SettingPageState extends State<SettingPage> {
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 10.0),
+
+                                          //about text here
                                           child: Text(
                                             'About',
                                             style: TextStyle(
@@ -464,6 +467,8 @@ class _SettingPageState extends State<SettingPage> {
                                         ),
                                       ],
                                     ),
+
+                                    //arrow right icon here
                                     Icon(
                                       Icons.arrow_right_rounded,
                                       color: Theme.of(context)
