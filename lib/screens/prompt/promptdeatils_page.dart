@@ -61,7 +61,7 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
                         content: Text(
                           snackBarMessage,
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.inversePrimary,
                           ),
                         ),
                       ),
