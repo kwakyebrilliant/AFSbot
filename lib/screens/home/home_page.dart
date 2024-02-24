@@ -44,13 +44,13 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        body: const SingleChildScrollView(
-          padding: EdgeInsets.all(60.0),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(60.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //Text displaying the app name
-              Text(
+              //Text displaying how
+              const Text(
                 'How can I help you Today?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -60,11 +60,39 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              //Text displaying the description of the app
-              Padding(
+              //Text displaying some description
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim sit amet risus varius feugiat.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+
+              //container displaying the mail icon
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: Container(
+                  height: 80.0,
+                  width: 80.0,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Icon(
+                    Icons.mail_rounded,
+                    size: 60.0,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
+
+              //Text displaying contact us details
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  'You can also send us a mail\nEmail: example@example.com',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16),
                 ),
