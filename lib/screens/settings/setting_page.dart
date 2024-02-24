@@ -254,43 +254,59 @@ class _SettingPageState extends State<SettingPage> {
                       child: Column(
                         children: [
                           //favorites here
-                          Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                          GestureDetector(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inverseSurface,
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Icon(
+                                          Icons.favorite,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .inversePrimary,
+                                          size: 30,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
+                                          child: Text(
+                                            'Favorites',
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .inversePrimary,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     Icon(
-                                      Icons.favorite,
+                                      Icons.arrow_right_rounded,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .inversePrimary,
                                       size: 30,
                                     ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        'Favorite',
-                                        style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 ),
-                                Icon(
-                                  Icons.arrow_right_rounded,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary,
-                                  size: 30,
-                                ),
-                              ],
+                              ),
                             ),
                           ),
 
