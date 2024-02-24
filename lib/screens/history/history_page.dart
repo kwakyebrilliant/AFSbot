@@ -415,6 +415,360 @@ class _HistoryPageState extends State<HistoryPage> {
                         ],
                       ),
                     ),
+
+                    //Text to display the day interval
+                    const Padding(
+                      padding: EdgeInsets.only(top: 40.0),
+                      child: Text(
+                        'Previous 7 Days',
+                        style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
+
+                    //container for a prompt 1
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //container for a prompt 2
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //container for a prompt 3
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //container for a prompt 4
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //Text to display the day interval
+                    const Padding(
+                      padding: EdgeInsets.only(top: 40.0),
+                      child: Text(
+                        'Previous 30 Days',
+                        style: TextStyle(
+                          color: Colors.blueGrey,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ),
+
+                    //container for a prompt 1
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //container for a prompt 2
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //container for a prompt 3
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //container for a prompt 4
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Theme.of(context).colorScheme.inverseSurface,
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 20.0,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 3.0,
+                              ),
+                              //Text for displaying a prompt
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula quam at lorem placerat, vel luctus risus tristique. Duis euismod commodo ligula, ut bibendum justo ultricies eget. Nulla facilisi. ',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
