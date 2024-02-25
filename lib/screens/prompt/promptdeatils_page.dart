@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PromptDetailsPage extends StatefulWidget {
@@ -92,6 +91,7 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
       ),
       body: Column(
         children: [
+          //displays each submitted message
           Flexible(
             child: ListView.builder(
               reverse: true,
@@ -103,6 +103,8 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
               },
             ),
           ),
+
+          //build text composer here
           Container(
             decoration: BoxDecoration(color: Theme.of(context).cardColor),
             child: _buildTextComposer(),
@@ -112,6 +114,7 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
     );
   }
 
+  //_buildTextComposer widget
   Widget _buildTextComposer() {
     return IconTheme(
       data: const IconThemeData(color: Colors.blueGrey),
