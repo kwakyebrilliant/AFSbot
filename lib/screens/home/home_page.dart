@@ -17,32 +17,32 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
           elevation: 0,
-          title: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(7.0),
-                  child: CircleAvatar(
-                    radius: 20,
-                    backgroundImage: const AssetImage('assets/images/logo.png'),
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(7.0),
+
+                //circle avatar for displaying the logo
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundImage: const AssetImage('assets/images/logo.png'),
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+
+              // afs chatbot text here
+              const Padding(
+                padding: EdgeInsets.only(left: 50.0),
+                child: Text(
+                  'Chat with AFSbot',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
                   ),
                 ),
-
-                // afs chatbot text here
-                const Padding(
-                  padding: EdgeInsets.only(left: 50.0),
-                  child: Text(
-                    'Chat with AFSbot',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
         body: SingleChildScrollView(
@@ -81,6 +81,8 @@ class _HomePageState extends State<HomePage> {
                     color: Theme.of(context).colorScheme.inversePrimary,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
+
+                  //mail icon here
                   child: Icon(
                     Icons.mail_rounded,
                     size: 60.0,
@@ -99,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              //start conversation button wrapped in a padding
+              //start conversation elevated button wrapped in a row with some padding
               Padding(
                 padding: const EdgeInsets.only(
                   top: 60.0,
@@ -107,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //start conversation button
+                    //start conversation elevated button
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(
