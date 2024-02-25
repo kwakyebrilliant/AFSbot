@@ -318,12 +318,24 @@ class _SettingPageState extends State<SettingPage> {
                                           MainAxisAlignment.start,
                                       children: [
                                         //favorite icon here
-                                        Icon(
-                                          Icons.favorite,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                          size: 30,
+                                        Container(
+                                          padding: const EdgeInsets.all(7.0),
+                                          height: 32.0,
+                                          width: 32.0,
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .inversePrimary,
+                                            borderRadius:
+                                                BorderRadius.circular(60.0),
+                                          ),
+                                          child: Icon(
+                                            Icons.favorite_rounded,
+                                            size: 18,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .background,
+                                          ),
                                         ),
                                         Padding(
                                           padding:
@@ -391,12 +403,24 @@ class _SettingPageState extends State<SettingPage> {
                                           MainAxisAlignment.start,
                                       children: [
                                         //newspaper icon for depicting the faqs here
-                                        Icon(
-                                          Icons.newspaper_rounded,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                          size: 30,
+                                        Container(
+                                          padding: const EdgeInsets.all(7.0),
+                                          height: 32.0,
+                                          width: 32.0,
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .inversePrimary,
+                                            borderRadius:
+                                                BorderRadius.circular(60.0),
+                                          ),
+                                          child: Icon(
+                                            Icons.newspaper_outlined,
+                                            size: 18,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .background,
+                                          ),
                                         ),
                                         Padding(
                                           padding:
@@ -464,12 +488,24 @@ class _SettingPageState extends State<SettingPage> {
                                           MainAxisAlignment.start,
                                       children: [
                                         //info icon for depicting about here
-                                        Icon(
-                                          Icons.info_rounded,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inversePrimary,
-                                          size: 30,
+                                        Container(
+                                          padding: const EdgeInsets.all(7.0),
+                                          height: 32.0,
+                                          width: 32.0,
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .inversePrimary,
+                                            borderRadius:
+                                                BorderRadius.circular(60.0),
+                                          ),
+                                          child: Icon(
+                                            Icons.info_rounded,
+                                            size: 18,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .background,
+                                          ),
                                         ),
                                         Padding(
                                           padding:
