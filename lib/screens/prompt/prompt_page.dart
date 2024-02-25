@@ -20,6 +20,8 @@ class _PromptPageState extends State<PromptPage> {
           onTap: () {
             Navigator.of(context).pop();
           },
+
+          //arrow left icon
           child: Icon(
             Icons.arrow_left_rounded,
             color: Theme.of(context).colorScheme.inversePrimary,
@@ -35,7 +37,7 @@ class _PromptPageState extends State<PromptPage> {
                 children: [
                   Column(
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                           children: [
@@ -74,6 +76,8 @@ class _PromptPageState extends State<PromptPage> {
               ),
             ),
           ),
+
+          // align the buildtext composer at the bottom of the screen
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -88,6 +92,7 @@ class _PromptPageState extends State<PromptPage> {
     );
   }
 
+  // _buildTextComposer widget
   Widget _buildTextComposer() {
     return IconTheme(
       data: const IconThemeData(color: Colors.blueGrey),
