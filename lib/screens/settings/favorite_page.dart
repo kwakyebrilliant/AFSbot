@@ -15,6 +15,8 @@ class _FavoritePageState extends State<FavoritePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
+
+        //favorite title text here
         title: Text(
           'Favorites',
           style: TextStyle(
@@ -27,12 +29,12 @@ class _FavoritePageState extends State<FavoritePage> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Container(
-            child: Icon(
-              Icons.arrow_left_rounded,
-              color: Theme.of(context).colorScheme.inversePrimary,
-              size: 50.0,
-            ),
+
+          //arrow left icon
+          child: Icon(
+            Icons.arrow_left_rounded,
+            color: Theme.of(context).colorScheme.inversePrimary,
+            size: 50.0,
           ),
         ),
       ),
