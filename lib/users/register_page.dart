@@ -1,4 +1,3 @@
-import 'package:afsbot/users/login_page.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -281,13 +280,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: [
                           //sign in button
                           ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginPage(),
-                                ),
-                              );
-                            },
+                            onPressed: widget.showLoginPage,
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   Theme.of(context).colorScheme.inversePrimary,
