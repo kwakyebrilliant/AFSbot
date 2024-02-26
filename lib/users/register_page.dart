@@ -2,7 +2,11 @@ import 'package:afsbot/users/login_page.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final VoidCallback showLoginPage;
+  const RegisterPage({
+    Key? key,
+    required this.showLoginPage,
+  }) : super(key: key);
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();

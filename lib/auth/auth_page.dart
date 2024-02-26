@@ -23,12 +23,12 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     if (showLoginPage) {
       return LoginPage(
-          // showRegisterPage: toggleScreens,
-          );
+        showRegisterPage: toggleScreens,
+      );
     } else {
       return RegisterPage(
-          // showLoginPage: toggleScreens,
-          );
+        showLoginPage: toggleScreens,
+      );
     }
   }
 }
