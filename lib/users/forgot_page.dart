@@ -186,6 +186,7 @@ class _ForgotPageState extends State<ForgotPage> {
                                   children: [
                                     //email textformfield
                                     TextFormField(
+                                      controller: _emailController,
                                       style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -209,6 +210,12 @@ class _ForgotPageState extends State<ForgotPage> {
                                           ),
                                         ),
                                       ),
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Email is required';
+                                        }
+                                        return null;
+                                      },
                                     ),
                                   ],
                                 ),
@@ -225,7 +232,11 @@ class _ForgotPageState extends State<ForgotPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  passwordReset();
+                                }
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context)
                                     .colorScheme
