@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class PromptPage extends StatefulWidget {
   const PromptPage({Key? key}) : super(key: key);
@@ -8,6 +10,42 @@ class PromptPage extends StatefulWidget {
 }
 
 class _PromptPageState extends State<PromptPage> {
+  final TextEditingController _textController = TextEditingController();
+  String? aiResponse;
+
+  Future<void> sendMessageToOpenAI(String message) async {
+    // Your OpenAI API key
+    const String apiKey = '';
+
+    // Request body
+    final Map<String, dynamic> requestBody = {
+      'prompt': message,
+      'max_tokens': 100,
+      'temperature': 0.7,
+      'stop': '\n',
+    };
+
+    final Uri uri = Uri.parse('https://api.openai.com/v1/completions');
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $apiKey',
+    };
+
+    final response =
+        await http.post(uri, headers: headers, body: jsonEncode(requestBody));
+
+    if (response.statusCode == 200) {
+      // Handle successful response from OpenAI
+      final Map<String, dynamic> data = jsonDecode(response.body);
+      setState(() {
+        aiResponse = data['choices'][0]['text'];
+      });
+    } else {
+      // Handle error response from OpenAI
+      print('Error: ${response.reasonPhrase}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +58,6 @@ class _PromptPageState extends State<PromptPage> {
           onTap: () {
             Navigator.of(context).pop();
           },
-
-          //arrow left icon
           child: Icon(
             Icons.arrow_left_rounded,
             color: Theme.of(context).colorScheme.inversePrimary,
@@ -35,49 +71,53 @@ class _PromptPageState extends State<PromptPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Column(
-                    children: <Widget>[
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
+                  aiResponse != null
+                      ? Column(
                           children: [
-                            //circle avatar displaying the logo
-                            Padding(
-                              padding: const EdgeInsets.only(top: 120.0),
-                              child: CircleAvatar(
-                                radius: 80,
-                                backgroundImage:
-                                    const AssetImage('assets/images/logo.png'),
-                                backgroundColor: Theme.of(context)
-                                    .colorScheme
-                                    .inverseSurface,
-                              ),
-                            ),
-
-                            //Text displaying how
-                            const Padding(
-                              padding: EdgeInsets.only(top: 80.0),
-                              child: Text(
-                                'How can I help you Today?',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 34,
-                                  fontWeight: FontWeight.bold,
-                                  wordSpacing: -2,
-                                ),
+                            // Display message and response
+                            // Replace this with your message and response UI
+                            Text('Message: ${_textController.text}'),
+                            Text('Response: $aiResponse'),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 120.0),
+                                    child: CircleAvatar(
+                                      radius: 80,
+                                      backgroundImage: const AssetImage(
+                                          'assets/images/logo.png'),
+                                      backgroundColor: Theme.of(context)
+                                          .colorScheme
+                                          .inverseSurface,
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 80.0),
+                                    child: Text(
+                                      'How can I help you Today?',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 34,
+                                        fontWeight: FontWeight.bold,
+                                        wordSpacing: -2,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
           ),
-
-          // align the buildtext composer at the bottom of the screen
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -92,7 +132,6 @@ class _PromptPageState extends State<PromptPage> {
     );
   }
 
-  // _buildTextComposer widget
   Widget _buildTextComposer() {
     return IconTheme(
       data: const IconThemeData(color: Colors.blueGrey),
@@ -100,7 +139,6 @@ class _PromptPageState extends State<PromptPage> {
         margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
         child: Row(
           children: <Widget>[
-            //edit icon here
             Padding(
               padding: const EdgeInsets.only(right: 10.0),
               child: Container(
@@ -117,20 +155,21 @@ class _PromptPageState extends State<PromptPage> {
                 ),
               ),
             ),
-
-            //message afsbot text here
-            const Flexible(
+            Flexible(
               child: TextField(
+                controller: _textController,
                 minLines: 1,
                 maxLines: 5,
-                decoration: InputDecoration.collapsed(
+                decoration: const InputDecoration.collapsed(
                   hintText: 'Message AFSbot',
                 ),
               ),
             ),
             IconButton(
               icon: const Icon(Icons.send),
-              onPressed: () {},
+              onPressed: () {
+                sendMessageToOpenAI(_textController.text);
+              },
             ),
           ],
         ),
