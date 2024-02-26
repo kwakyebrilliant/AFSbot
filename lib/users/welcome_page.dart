@@ -1,6 +1,5 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:afsbot/users/login_page.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
@@ -81,11 +80,11 @@ class _WelcomeState extends State<Welcome> {
                             padding: const EdgeInsets.only(top: 50.0),
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => const LoginPage(),
-                                  ),
-                                );
+                                // Navigator.of(context).push(
+                                //   MaterialPageRoute(
+                                //     builder: (context) => const LoginPage(),
+                                //   ),
+                                // );
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context)
