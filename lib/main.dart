@@ -1,7 +1,7 @@
+import 'package:afsbot/auth/main_page.dart';
 import 'package:afsbot/theme/dark_mode.dart';
 import 'package:afsbot/theme/light_mode.dart';
 import 'package:afsbot/theme/theme_notifier.dart';
-import 'package:afsbot/users/welcome_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Welcome(),
+      home: const MainPage(),
       theme: lightMode,
       darkTheme: darkMode,
       themeMode: themeNotifier.currentTheme == lightMode
