@@ -1,3 +1,4 @@
+import 'package:afsbot/screens/prompt/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -15,7 +16,7 @@ class _PromptPageState extends State<PromptPage> {
 
   Future<void> sendMessageToOpenAI(String message) async {
     // Your OpenAI API key
-    const String apiKey = '';
+    const String apiKey = Config.openAIApiKey;
 
     // Request body
     final Map<String, dynamic> requestBody = {
