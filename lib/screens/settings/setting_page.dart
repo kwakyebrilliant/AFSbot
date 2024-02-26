@@ -1,7 +1,9 @@
 import 'package:afsbot/screens/settings/about_page.dart';
 import 'package:afsbot/screens/settings/favorite_page.dart';
 import 'package:afsbot/theme/theme_notifier.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:afsbot/screens/settings/faq_page.dart';
@@ -574,15 +576,20 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                   ),
 
-                  //logout text here
+                  //logout textbutton here
                   Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
-                      child: Text(
-                        'LOGOUT',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.inversePrimary,
-                          fontWeight: FontWeight.bold,
+                    child: TextButton(
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+                        child: Text(
+                          'LOGOUT',
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.inversePrimary,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
