@@ -39,6 +39,9 @@ dependencies:
   provider: ^6.1.1
   appbar_animated: ^0.0.3
   http: ^1.2.1
+  firebase_core: ^2.18.0
+  firebase_auth: ^4.10.1
+  cloud_firestore: ^4.9.3
 
 dev_dependencies:
   flutter_test:
