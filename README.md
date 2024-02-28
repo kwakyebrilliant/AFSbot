@@ -12,6 +12,7 @@ To get started, you need to have [Flutter](https://docs.flutter.dev/get-started/
 
 ### Configuration
 Signup or login to firebase account and create a new project. Be sure to choose device types for your project.
+Signup or login to OpenAI and generate your secrete key. This secrete key should be used in your .env file to be able to run prompts.
 
 For firestore firebase, add the following rules:
 ```flutter
