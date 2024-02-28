@@ -126,8 +126,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
+                        padding: const EdgeInsets.symmetric(vertical: 15.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -148,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                                   //chat icon here
                                   child: Icon(
                                     Icons.chat_rounded,
-                                    size: 18.0,
+                                    size: 24.0,
                                     color: Theme.of(context)
                                         .colorScheme
                                         .inversePrimary,
@@ -162,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                               'Start Conversation',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17.0,
+                                fontSize: 18.0,
                               ),
                             ),
                           ],

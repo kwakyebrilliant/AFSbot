@@ -1,0 +1,264 @@
+import 'package:afsbot/screens/prompt/promptdeatils_page.dart';
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:afsbot/screens/prompt/prompt_page.dart';
+
+class HistoryPage extends StatefulWidget {
+  const HistoryPage({Key? key}) : super(key: key);
+
+  @override
+  State<HistoryPage> createState() => _HistoryPageState();
+}
+
+class _HistoryPageState extends State<HistoryPage> {
+  // Firebase Firestore and Firebase Auth instances
+  final firestoreInstance = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  String? _searchText = ''; // To store the current search text
+
+  Future<String?> getCurrentUserUID() async {
+    final user = await _auth.currentUser;
+    return user?.uid;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<List<String>> fetchPrompts(String searchText) async {
+    String? userId = await getCurrentUserUID();
+    List<String> prompts = [];
+    if (userId != null) {
+      QuerySnapshot promptSnapshots = await firestoreInstance
+          .collection('users')
+          .doc(userId)
+          .collection('prompts')
+          .orderBy('timestamp', descending: true)
+          .get();
+
+      // Iterate through the prompts and add them to the list
+      for (QueryDocumentSnapshot promptSnapshot in promptSnapshots.docs) {
+        Map<String, dynamic>? data =
+            promptSnapshot.data() as Map<String, dynamic>?;
+
+        // Assuming 'prompt' is the key for prompt text
+        String promptText = data?['conversation'][0]['prompt'] ?? '';
+
+        // Filter prompts based on search text
+        if (promptText.toLowerCase().contains(searchText.toLowerCase())) {
+          prompts.add(promptText);
+        }
+      }
+    }
+    return prompts;
+  }
+
+  // Function to delete a prompt
+  Future<void> deletePrompt(String promptId) async {
+    String? userId = await getCurrentUserUID();
+    if (userId != null) {
+      try {
+        // Delete the prompt
+        await firestoreInstance
+            .collection('users')
+            .doc(userId)
+            .collection('prompts')
+            .doc(promptId)
+            .delete();
+        print('Prompt deleted successfully');
+
+        // Fetch the updated prompt list after deletion
+        setState(() {
+          fetchPrompts(_searchText!);
+        });
+      } catch (e) {
+        print('Error deleting prompt: $e');
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Theme.of(context).colorScheme.background,
+              expandedHeight: 100.0,
+              floating: false,
+              pinned: true,
+              elevation: 0,
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: true,
+                title: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Search field
+                      Expanded(
+                        child: TextFormField(
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.inversePrimary,
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              _searchText = value;
+                            });
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Search',
+                            hintStyle: TextStyle(
+                              color:
+                                  Theme.of(context).colorScheme.inverseSurface,
+                            ),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Icon(
+                                Icons.search_rounded,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inverseSurface,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Button to navigate to PromptPage
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const PromptPage(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.inversePrimary,
+                            borderRadius: BorderRadius.circular(60.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Icon(
+                              Icons.edit_rounded,
+                              size: 16.0,
+                              color: Theme.of(context).colorScheme.background,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // Display prompts
+            FutureBuilder(
+              future: fetchPrompts(_searchText!),
+              builder:
+                  (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const SliverToBoxAdapter(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  );
+                } else if (snapshot.hasData) {
+                  // Display prompts
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => PromptDetailsPage(
+                                  promptText: snapshot.data![index],
+                                  // Pass other necessary details here
+                                ),
+                              ),
+                            );
+                          },
+                          child: Dismissible(
+                            key: Key(snapshot.data![index]),
+                            direction: DismissDirection.endToStart,
+                            background: Container(
+                              color: Colors.red,
+                              alignment: Alignment.centerRight,
+                              child: const Padding(
+                                padding: EdgeInsets.only(right: 20.0),
+                                child: Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            onDismissed: (direction) {
+                              // Delete prompt when dismissed
+                              deletePrompt(snapshot.data![index]);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15.0, vertical: 10.0),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inverseSurface,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0, vertical: 8.0),
+                                  child: Text(
+                                    snapshot.data![index],
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      childCount: snapshot.data!.length,
+                    ),
+                  );
+                } else {
+                  return const SliverToBoxAdapter(
+                    child: SizedBox.shrink(),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -1,7 +1,5 @@
 // ignore_for_file: unnecessary_string_interpolations
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -25,13 +23,11 @@ class PromptPage extends StatefulWidget {
 }
 
 class _PromptPageState extends State<PromptPage> {
-  //firebase firestore and firebase auth instances
-  final firestoreInstance = FirebaseFirestore.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
   late final TextEditingController promptController;
   String responseTxt = '';
   String promptText = '';
+
+  List<Map<String, String>> chatHistory = []; // List to store chat history
 
   String? aiResponse;
 
@@ -45,11 +41,6 @@ class _PromptPageState extends State<PromptPage> {
   void dispose() {
     promptController.dispose();
     super.dispose();
-  }
-
-  Future<String?> getCurrentUserUID() async {
-    final user = await _auth.currentUser;
-    return user?.uid;
   }
 
   @override
@@ -70,25 +61,47 @@ class _PromptPageState extends State<PromptPage> {
             size: 50.0,
           ),
         ),
-        title: const Text(
-          'Chat with AFSbot',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18.0,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 30.0),
+              child: Text(
+                'Chat with AFSbot',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  borderRadius: BorderRadius.circular(60.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Icon(
+                    Icons.edit_rounded,
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // PromptBldr here
-                  PromptBldr(responseTxt: responseTxt),
-                ],
-              ),
+          Flexible(
+            child: Column(
+              children: [
+                if (chatHistory.isNotEmpty) ..._buildChatHistory(),
+                // PromptBldr(responseTxt: responseTxt),
+              ],
             ),
           ),
           Align(
@@ -103,13 +116,117 @@ class _PromptPageState extends State<PromptPage> {
     );
   }
 
+  List<Widget> _buildChatHistory() {
+    return [
+      Expanded(
+        child: ListView(
+          shrinkWrap: true,
+          children: chatHistory.map((chat) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundImage: const AssetImage(
+                          'assets/images/person.png',
+                        ),
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            chat['prompt']!,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color:
+                                  Theme.of(context).colorScheme.inverseSurface,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // Response
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color:
+                                  Theme.of(context).colorScheme.inverseSurface,
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // AFS logo
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundImage: const AssetImage(
+                                        'assets/images/logo.png'),
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+
+                                  // Response text
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        chat['response']!,
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onBackground,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }).toList(),
+        ),
+      ),
+    ];
+  }
+
   completionFun() async {
     setState(() => responseTxt = "Loading...");
 
-    // Save the text before clearing
     final String promptText = promptController.text;
 
-    // Clear the text field
     promptController.clear();
 
     final response = await http.post(
@@ -132,9 +249,6 @@ class _PromptPageState extends State<PromptPage> {
       ),
     );
 
-    // Print the response body for debugging
-    print(response.body);
-
     try {
       final jsonResponse = jsonDecode(response.body);
       final choices = jsonResponse['choices'];
@@ -143,10 +257,8 @@ class _PromptPageState extends State<PromptPage> {
         if (message != null) {
           setState(() {
             responseTxt = message['content'] ?? 'No response';
+            chatHistory.add({'prompt': promptText, 'response': responseTxt});
           });
-
-          // Save prompt and response to Firestore
-          savePromptAndResponse(promptText, responseTxt);
         } else {
           setState(() {
             responseTxt = 'No message content available';
@@ -161,33 +273,6 @@ class _PromptPageState extends State<PromptPage> {
       setState(() {
         responseTxt = 'Error: ${e.toString()}';
       });
-    }
-  }
-
-  void savePromptAndResponse(String prompt, String response) async {
-    try {
-      final currentUserUID = await getCurrentUserUID();
-      if (currentUserUID != null) {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(currentUserUID)
-            .collection('prompts')
-            .add({
-          'conversation': [
-            {
-              'prompt': prompt,
-              'response': response,
-              'timestamp': DateTime.now().toUtc()
-            }
-          ],
-          'timestamp': DateTime.now().toUtc()
-        });
-        print('Prompt and response saved successfully.');
-      } else {
-        print('Error: Current user UID is null.');
-      }
-    } catch (e) {
-      print('Error saving prompt and response: $e');
     }
   }
 }

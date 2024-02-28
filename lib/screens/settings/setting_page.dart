@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:afsbot/screens/settings/about_page.dart';
-import 'package:afsbot/screens/settings/favorite_page.dart';
 import 'package:afsbot/theme/theme_notifier.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,6 +17,10 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  //firebase firestore and firebase auth instances
+  final firestoreInstance = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   bool isDarkMode = false;
   bool isSwitched = false;
 
@@ -38,10 +41,36 @@ class _SettingPageState extends State<SettingPage> {
   void initState() {
     super.initState();
     loadSwitchState();
+    fetchPromptCount();
   }
 
-  //Number of days visited value
-  int visitedDays = 4;
+  Future<String?> getCurrentUserUID() async {
+    final user = await _auth.currentUser;
+    return user?.uid;
+  }
+
+  // Function to fetch the prompt count from Firestore
+  void fetchPromptCount() async {
+    final uid = await getCurrentUserUID();
+
+    try {
+      // Get the prompts collection for the authenticated user
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('prompts')
+          .get();
+
+      // Update the promptCount variable with the count of documents in the collection
+      setState(() {
+        promptCount = querySnapshot.size;
+      });
+    } catch (e) {
+      print('Error fetching prompt count: $e');
+    }
+  }
+
+  int promptCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -111,193 +140,6 @@ class _SettingPageState extends State<SettingPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        //Top cards here
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 30.0, left: 15.0, right: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              //container for the number of prompts and its icon
-                              Container(
-                                height: 110.0,
-                                width: 110.0,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inverseSurface,
-                                      offset: const Offset(1, 1),
-                                      blurRadius: 2.0,
-                                    ),
-                                  ],
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 25.0),
-
-                                        //the edit icon for the number of prompts
-                                        child: Container(
-                                          padding: const EdgeInsets.all(7.0),
-                                          height: 42.0,
-                                          width: 42.0,
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .inversePrimary,
-                                            borderRadius:
-                                                BorderRadius.circular(60.0),
-                                          ),
-                                          child: Icon(
-                                            Icons.edit_rounded,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .background,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 10.0),
-
-                                        //text displying the total number of prompts
-                                        child: Text(
-                                          '316',
-                                          style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .inversePrimary,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                              //container for the number of favorite and its icon
-                              Container(
-                                height: 110.0,
-                                width: 110.0,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inverseSurface,
-                                      offset: const Offset(1, 1),
-                                      blurRadius: 2.0,
-                                    ),
-                                  ],
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 25.0),
-
-                                        //the favorite icon
-                                        child: Container(
-                                          padding: const EdgeInsets.all(7.0),
-                                          height: 42.0,
-                                          width: 42.0,
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .inversePrimary,
-                                            borderRadius:
-                                                BorderRadius.circular(60.0),
-                                          ),
-                                          child: Icon(
-                                            Icons.favorite_rounded,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .background,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 10.0),
-
-                                        //text displaying the total number of favorites
-                                        child: Text(
-                                          '172',
-                                          style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .inversePrimary,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                              //container for the number of days visited within a week
-                              Container(
-                                width: 110,
-                                height: 110,
-                                decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inverseSurface,
-                                      offset: const Offset(1, 1),
-                                      blurRadius: 2.0,
-                                    ),
-                                  ],
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Stack(
-                                    fit: StackFit.expand,
-                                    children: [
-                                      //circular progress indicator here (This is progressive)
-                                      CircularProgressIndicator(
-                                        value: visitedDays / 7,
-                                        strokeWidth: 10,
-                                        backgroundColor: Theme.of(context)
-                                            .colorScheme
-                                            .inverseSurface,
-                                        valueColor:
-                                            const AlwaysStoppedAnimation<Color>(
-                                                Colors.green),
-                                      ),
-
-                                      //display the number of days visited in a week
-                                      Center(
-                                        child: Text(
-                                          '$visitedDays/7 days',
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
                         //settings items here
                         Padding(
                           padding: const EdgeInsets.only(
@@ -318,86 +160,80 @@ class _SettingPageState extends State<SettingPage> {
                             ),
                             child: Column(
                               children: [
-                                //favorites here
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const FavoritePage(),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .inverseSurface,
-                                          width: 1.0,
-                                        ),
+                                //total prompts here
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inverseSurface,
+                                        width: 1.0,
                                       ),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              //favorite icon here
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.all(7.0),
-                                                height: 32.0,
-                                                width: 32.0,
-                                                decoration: BoxDecoration(
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            //edit icon here
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.all(7.0),
+                                              height: 32.0,
+                                              width: 32.0,
+                                              decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .inversePrimary,
+                                                borderRadius:
+                                                    BorderRadius.circular(60.0),
+                                              ),
+                                              child: Icon(
+                                                Icons.edit,
+                                                size: 18,
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .background,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10.0),
+
+                                              //total prompts counts text here
+                                              child: Text(
+                                                'Total Prompts',
+                                                style: TextStyle(
                                                   color: Theme.of(context)
                                                       .colorScheme
                                                       .inversePrimary,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          60.0),
-                                                ),
-                                                child: Icon(
-                                                  Icons.favorite_rounded,
-                                                  size: 18,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .background,
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10.0),
+                                            ),
+                                          ],
+                                        ),
 
-                                                //favorite text here
-                                                child: Text(
-                                                  'Favorites',
-                                                  style: TextStyle(
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .inversePrimary,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                        //total prompts count figurer here
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 12.0),
+                                          child: Text(
+                                            '$promptCount',
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .inversePrimary,
+                                            ),
                                           ),
-
-                                          //arrow right here
-                                          Icon(
-                                            Icons.arrow_right_rounded,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .inversePrimary,
-                                            size: 30,
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
