@@ -1,16 +1,39 @@
 # afsbot
 
-A new Flutter project.
+This is a Flutter-based Chatgpt App with a sleek and modern design using Firebase as database.
 
-## Getting Started
+## Installations
 
-This project is a starting point for a Flutter application.
+To get started, you need to have [Flutter](https://docs.flutter.dev/get-started/install) installed on your machine. Then, follow the instructions below:
 
-A few resources to get you started if this is your first Flutter project:
+- Open the terminal and navigate to the project folder.
+- Run the command flutter packages get to install the required packages.
+- Run flutter run to build and run the debug app on your emulator/phone.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Configuration
+Signup or login to firebase account and create a new project. Be sure to choose device types for your project.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For firestore firebase, add the following rules:
+```flutter
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    // Allow read and write access to the "users" collection
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Allow read and write access to the "prompts"
+    match /users/{userId}/prompts/{promptId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
+
+# License
+Distributed under the MIT License.
+
+# Contact
+- Brilliant Kwakye - https://twitter.com/kwakyebrilliant
