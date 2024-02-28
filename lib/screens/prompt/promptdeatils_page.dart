@@ -33,6 +33,7 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   bool isFavoriteActive = false;
+  late Map<String, bool> favoriteStatusMap;
 
   @override
   void initState() {
@@ -49,8 +50,9 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
 
   void _loadFavoriteState() async {
     final prefs = await SharedPreferences.getInstance();
+    final favoriteKey = 'isFavoriteActive_${widget.docId}';
     setState(() {
-      isFavoriteActive = prefs.getBool('isFavoriteActive') ?? false;
+      isFavoriteActive = prefs.getBool(favoriteKey) ?? false;
     });
   }
 
@@ -99,7 +101,8 @@ class _PromptDetailsPageState extends State<PromptDetailsPage> {
                     setState(() {
                       isFavoriteActive = !isFavoriteActive;
                     });
-                    prefs.setBool('isFavoriteActive', isFavoriteActive);
+                    final favoriteKey = 'isFavoriteActive_${widget.docId}';
+                    prefs.setBool(favoriteKey, isFavoriteActive);
                     final snackBarMessage = isFavoriteActive
                         ? 'Added as favorite'
                         : 'Removed from favorite';
