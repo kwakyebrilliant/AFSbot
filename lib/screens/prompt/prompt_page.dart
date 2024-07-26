@@ -199,7 +199,7 @@ class PromptBldr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check if responseTxt is not empty
+    // Check if responseTxt isnotempty
     return responseTxt.isNotEmpty
         ? Container(
             color: Theme.of(context).colorScheme.background,
